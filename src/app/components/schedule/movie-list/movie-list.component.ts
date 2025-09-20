@@ -1,15 +1,6 @@
-import {Component, Input} from '@angular/core';
+import {Component, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-
-
-interface Movie {
-  title: string;
-  poster: string;
-  description: string;
-  duration: string;
-  director: string;
-  releaseYear: string;
-}
+import {Movie} from '../../../utilies/models/movie.interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -20,5 +11,5 @@ interface Movie {
   styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent {
-  @Input() movies: Movie[] = [];
+  movies = input.required<Movie[]>();
 }

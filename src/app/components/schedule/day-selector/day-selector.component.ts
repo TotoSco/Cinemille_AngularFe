@@ -1,6 +1,7 @@
 import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Day, DaysService} from '../../../utilies/services/days.service';
+import {DaysService} from '../../../utilies/services/days.service';
+import {Day} from '../../../utilies/models/day.interface';
 
 @Component({
   selector: 'app-day-selector',

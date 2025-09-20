@@ -1,15 +1,11 @@
-import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
-import { addDays, format } from 'date-fns';
-import { eachDayOfInterval } from 'date-fns/eachDayOfInterval';
-import { DateRange } from '@angular/material/datepicker';
+import {Injectable} from '@angular/core';
+import {BehaviorSubject} from 'rxjs';
+import {addDays, format} from 'date-fns';
+import {eachDayOfInterval} from 'date-fns/eachDayOfInterval';
+import {DateRange} from '@angular/material/datepicker';
+import {Day} from '../models/day.interface';
 
-export interface Day {
-  label: string;
-  date: Date;
-}
-
-@Injectable({ providedIn: 'root' })
+@Injectable({providedIn: 'root'})
 export class DaysService {
   private daysSubject = new BehaviorSubject<Day[]>([]);
   days$ = this.daysSubject.asObservable();
@@ -34,7 +30,7 @@ export class DaysService {
   /** From date range picker */
   generateDaysFromRange(range: DateRange<Date>) {
     if (range.start && range.end) {
-      const days = eachDayOfInterval({ start: range.start, end: range.end }).map(
+      const days = eachDayOfInterval({start: range.start, end: range.end}).map(
         (date: Date) => ({
           label: format(date, 'EEE dd/MM'),
           date,
