@@ -4,8 +4,8 @@
     (click)="selectDay(d.date)"
     class="px-4 py-2 rounded-full border font-medium transition-all shadow-md relative z-10"
     [ngClass]="{
-      'bg-blue-500 text-white border-blue-600': d.date === selectedDate,
-      'bg-white text-gray-700 border-gray-300 hover:bg-blue-100': d.date !== selectedDate
+      'bg-blue-500 text-white border-blue-600': d.date === selectedDate(),
+      'bg-white text-gray-700 border-gray-300 hover:bg-blue-100': d.date !== selectedDate()
     }"
   >
     {{ d.label }}

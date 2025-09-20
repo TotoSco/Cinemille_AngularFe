@@ -3,7 +3,7 @@ import {DaySelectorComponent} from './day-selector/day-selector.component';
 import {MovieListComponent} from './movie-list/movie-list.component';
 import {DateRangePickerComponent} from '../date-range-picker/date-range-picker.component';
 import {Movie} from '../../utilies/models/movie.interface';
-import {MoviesService} from '../../utilies/services/movies.service';
+import {appStore} from '../../utilies/store/app.store';
 
 @Component({
   selector: 'app-schedule',
@@ -16,15 +16,11 @@ import {MoviesService} from '../../utilies/services/movies.service';
   styleUrl: './schedule.component.css'
 })
 export class ScheduleComponent {
-  moviesService = inject(MoviesService);
+  appStore = inject(appStore);
 
-  moviesList = signal<Movie[]>([]);
+  moviesList = this.appStore.movies;
 
   onDateSelected(date: Date) {
-    console.log('Data selezionata:', date);
-    this.moviesService.getMoviesByDate(date).subscribe(movies => {
-      console.log(movies);
-      this.moviesList.set(movies);
-    });
+    this.appStore.setMoviesByDate(date);
   }
 }

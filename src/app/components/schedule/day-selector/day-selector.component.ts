@@ -1,7 +1,8 @@
-import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, inject, OnInit, Output, signal} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {DaysService} from '../../../utilies/services/days.service';
 import {Day} from '../../../utilies/models/day.interface';
+import {appStore} from '../../../utilies/store/app.store';
 
 @Component({
   selector: 'app-day-selector',
@@ -12,22 +13,22 @@ import {Day} from '../../../utilies/models/day.interface';
   styleUrls: ['./day-selector.component.css']
 })
 export class DaySelectorComponent implements OnInit {
+  appStore = inject(appStore);
   daysService = inject(DaysService);
 
   days!: Day[];
-  selectedDate: Date = new Date();
+  selectedDate = this.appStore.selectedDate;
 
   @Output() dateSelected = new EventEmitter<Date>();
 
   ngOnInit(): void {
     this.daysService.days$.subscribe(days => {
-      console.log(days);
       this.days = days;
     })
   }
 
   selectDay(day: Date) {
-    this.selectedDate = day;
+    this.appStore.setSelectedDate(day);
     this.dateSelected.emit(day);
   }
 }
