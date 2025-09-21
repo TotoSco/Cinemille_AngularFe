@@ -6,6 +6,7 @@ import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
 import {Schedule} from '../../utilities/models/schedule.interface';
 import {MatInput} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-history',
@@ -15,6 +16,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatPaginatorModule,
     MatFormFieldModule,
     MatInput,
+    FormsModule,
   ],
   templateUrl: './history.component.html',
   styleUrl: './history.component.css'
@@ -84,19 +86,8 @@ export class HistoryComponent implements OnInit {
     this.schedules.filter = JSON.stringify(this.filters);
   }
 
-  onFilterFrom(event: Event) {
-    this.filters.fromDate = (event.target as HTMLInputElement).value.toLowerCase();
-    if (this.filters.fromDate.trim() !== '') {
-      this.disabledFiltersInputs.set({title: true, date: false})
-    } else {
-      this.disabledFiltersInputs.set({title: false, date: false})
-    }
-    this.schedules.filter = JSON.stringify(this.filters);
-  }
-
-  onFilterTo(event: Event) {
-    this.filters.toDate = (event.target as HTMLInputElement).value.toLowerCase();
-    if (this.filters.toDate.trim() !== '') {
+  onFilterDate() {
+    if (this.filters.fromDate.trim() !== '' || this.filters.toDate.trim() !== '') {
       this.disabledFiltersInputs.set({title: true, date: false})
     } else {
       this.disabledFiltersInputs.set({title: false, date: false})

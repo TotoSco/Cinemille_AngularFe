@@ -25,17 +25,19 @@
       <input
         matInput
         placeholder="yyyy-mm-dd"
-        (keyup)="onFilterFrom($event)"
+        [(ngModel)]="filters.fromDate"
+        (keyup)="onFilterDate()"
         [disabled]="this.disabledFiltersInputs().date"
       >
     </mat-form-field>
-
+    <p>e</p>
     <mat-form-field class="w-1/4">
       <mat-label>End date</mat-label>
       <input
         matInput
         placeholder="yyyy-mm-dd"
-        (keyup)="onFilterTo($event)"
+        [(ngModel)]="filters.toDate"
+        (keyup)="onFilterDate()"
         [disabled]="this.disabledFiltersInputs().date"
       >
     </mat-form-field>
@@ -56,7 +58,7 @@
 
   <ng-container matColumnDef="theatre">
     <th mat-header-cell *matHeaderCellDef>Theatre</th>
-    <td mat-cell *matCellDef="let element" class="schedules-table-cell">{{ element.theatre }}</td>
+    <td mat-cell *matCellDef="let element" class="schedules-table-cell">SALA {{ element.theatre }}</td>
   </ng-container>
 
   <ng-container matColumnDef="fromDate">
