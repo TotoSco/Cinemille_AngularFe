@@ -1,4 +1,4 @@
-export const moviesMock = [
+export const MOCK_MOVIES = [
   {
     title: 'Incendies',
     poster: 'https://a.ltrbxd.com/resized/film-poster/1/8/6/2/7/18627-incendies-0-230-0-345-crop.jpg?v=428c0056f4',
