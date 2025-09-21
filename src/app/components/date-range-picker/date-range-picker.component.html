@@ -7,8 +7,8 @@
         [min]="todayDate"
         formGroupName="dateRange"
       >
-        <input matStartDate placeholder="Start date" formControlName="start" />
-        <input matEndDate placeholder="End date" formControlName="end" />
+        <input matStartDate placeholder="Start date" formControlName="start"/>
+        <input matEndDate placeholder="End date" formControlName="end"/>
       </mat-date-range-input>
 
       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
@@ -19,7 +19,10 @@
   <button
     type="button"
     (click)="onSubmit()"
-    class="px-6 py-2 rounded-lg bg-blue-600 text-white font-medium shadow-md hover:bg-blue-700 transition"
+    class="px-6 py-2 rounded-lg font-medium shadow-md transition
+         bg-blue-600 text-white hover:bg-blue-700
+         disabled:bg-gray-400 disabled:cursor-not-allowed"
+    [disabled]="this.datePickForm.value.dateRange.start === null && this.datePickForm.value.dateRange.end === null"
   >
     Filter
   </button>

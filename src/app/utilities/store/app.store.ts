@@ -29,16 +29,18 @@ export const appStore = signalStore(
     setSelectedDate(date: Date) {
       patchState(store, {selectedDate: date});
     },
-    setMoviesByDate(date: Date) {
-      moviesService.getMoviesByDate(date).subscribe(movies => {
-        patchState(store, {movies: movies});
-      });
+    setMoviesByDate(date: Date | null) {
+      date !== null ?
+        moviesService.getMoviesByDate(date).subscribe(movies => {
+          patchState(store, {movies: movies});
+        }) :
+        patchState(store, {movies: []});
     },
     setSchedules() {
       historyService.isLoading$.next(true);
       return historyService.fetchHistorySchedules().pipe(
         tap(schedules => {
-          patchState(store, { historySchedules: schedules });
+          patchState(store, {historySchedules: schedules});
           historyService.isLoading$.next(false);
         })
       );

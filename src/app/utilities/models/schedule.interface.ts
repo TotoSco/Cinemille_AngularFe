@@ -1,6 +1,8 @@
 export interface Schedule {
-  title: string;
+  id: string;
   theatre: string;
-  from: string;
-  to: string;
+  fromDate: string;
+  toDate: string;
+  movieId: string;
+  movieTitle: string;
 }

@@ -24,7 +24,7 @@ export class HistoryComponent implements OnInit {
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
-  columns: string[] = ['title', 'theatre', 'from', 'to'];
+  columns: string[] = ['movieTitle', 'theatre', 'fromDate', 'toDate'];
 
   appStore = inject(appStore);
   cdr = inject(ChangeDetectorRef);
@@ -33,8 +33,8 @@ export class HistoryComponent implements OnInit {
 
   filters = {
     title: '',
-    from: '',
-    to: ''
+    fromDate: '',
+    toDate: ''
   };
 
   disabledFiltersInputs = signal<{ title: boolean, date: boolean }>({
@@ -51,23 +51,23 @@ export class HistoryComponent implements OnInit {
       this.schedules.filterPredicate = function (data, filter: string): boolean {
         const searchTerms = filter ? JSON.parse(filter) : {};
         const titleFilter = (searchTerms.title || '').trim().toLowerCase();
-        const fromFilter = (searchTerms.from || '').trim();
-        const toFilter = (searchTerms.to || '').trim();
+        const fromFilter = (searchTerms.fromDate || '').trim();
+        const toFilter = (searchTerms.toDate || '').trim();
 
         if (!titleFilter && !fromFilter && !toFilter) {
           return true;
         }
 
         const matchesTitle = titleFilter
-          ? data.title.toLowerCase().startsWith(titleFilter)
+          ? data.movieTitle.toLowerCase().startsWith(titleFilter)
           : false;
 
         const matchesFrom = fromFilter
-          ? data.from.toLowerCase().includes(fromFilter)
+          ? data.fromDate.toLowerCase().includes(fromFilter)
           : false;
 
         const matchesTo = toFilter
-          ? data.to.toLowerCase().includes(toFilter)
+          ? data.toDate.toLowerCase().includes(toFilter)
           : false;
         return matchesTitle || (matchesFrom && matchesTo);
       }
@@ -85,8 +85,8 @@ export class HistoryComponent implements OnInit {
   }
 
   onFilterFrom(event: Event) {
-    this.filters.from = (event.target as HTMLInputElement).value.toLowerCase();
-    if (this.filters.from.trim() !== '') {
+    this.filters.fromDate = (event.target as HTMLInputElement).value.toLowerCase();
+    if (this.filters.fromDate.trim() !== '') {
       this.disabledFiltersInputs.set({title: true, date: false})
     } else {
       this.disabledFiltersInputs.set({title: false, date: false})
@@ -95,8 +95,8 @@ export class HistoryComponent implements OnInit {
   }
 
   onFilterTo(event: Event) {
-    this.filters.to = (event.target as HTMLInputElement).value.toLowerCase();
-    if (this.filters.from.trim() !== '') {
+    this.filters.toDate = (event.target as HTMLInputElement).value.toLowerCase();
+    if (this.filters.toDate.trim() !== '') {
       this.disabledFiltersInputs.set({title: true, date: false})
     } else {
       this.disabledFiltersInputs.set({title: false, date: false})

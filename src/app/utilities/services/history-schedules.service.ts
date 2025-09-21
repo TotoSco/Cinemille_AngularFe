@@ -10,7 +10,7 @@ import {Schedule} from '../models/schedule.interface';
 export class HistoryScheduleService {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/api/v1';
   isLoading$ = new BehaviorSubject<boolean>(false);
 
   fetchHistorySchedules(): Observable<Schedule[]> {

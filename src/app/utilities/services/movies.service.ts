@@ -11,7 +11,7 @@ import {format} from 'date-fns';
 export class MoviesService {
   private http = inject(HttpClient);
 
-  private apiUrl = 'http://localhost:3000';
+  private apiUrl = 'http://localhost:3000/api/v1';
 
   getMoviesByDate(date: Date): Observable<Movie[]> {
     const params = new HttpParams().set('date', format(date, 'yyyy-MM-dd'));
