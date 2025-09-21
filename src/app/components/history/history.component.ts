@@ -1,9 +1,9 @@
 import {ChangeDetectorRef, Component, inject, OnInit, signal, ViewChild} from '@angular/core';
 import {MatTableDataSource, MatTableModule} from '@angular/material/table';
-import {appStore} from '../../utilies/store/app.store';
+import {appStore} from '../../utilities/store/app.store';
 import {MatSort, MatSortModule} from '@angular/material/sort';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
-import {Schedule} from '../../utilies/models/schedule.interface';
+import {Schedule} from '../../utilities/models/schedule.interface';
 import {MatInput} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 

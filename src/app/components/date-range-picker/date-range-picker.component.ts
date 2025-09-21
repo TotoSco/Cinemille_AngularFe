@@ -1,9 +1,9 @@
 import {Component, inject, OnInit} from '@angular/core';
 import {MAT_DATE_RANGE_SELECTION_STRATEGY, MatDatepickerModule} from '@angular/material/datepicker';
-import {WeekRangeSelectionStrategy} from '../../utilies/week-range-selection.strategy';
+import {WeekRangeSelectionStrategy} from '../../utilities/week-range-selection.strategy';
 import {provideNativeDateAdapter} from '@angular/material/core';
 import {MatFormFieldModule} from '@angular/material/form-field';
-import {DaysService} from '../../utilies/services/days.service';
+import {DaysService} from '../../utilities/services/days.service';
 import {FormBuilder, FormControl, FormGroup, ReactiveFormsModule} from '@angular/forms';
 
 @Component({

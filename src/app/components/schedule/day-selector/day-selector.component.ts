@@ -1,8 +1,8 @@
-import {Component, EventEmitter, inject, OnInit, Output, signal} from '@angular/core';
+import {Component, EventEmitter, inject, OnInit, Output} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {DaysService} from '../../../utilies/services/days.service';
-import {Day} from '../../../utilies/models/day.interface';
-import {appStore} from '../../../utilies/store/app.store';
+import {DaysService} from '../../../utilities/services/days.service';
+import {Day} from '../../../utilities/models/day.interface';
+import {appStore} from '../../../utilities/store/app.store';
 
 @Component({
   selector: 'app-day-selector',

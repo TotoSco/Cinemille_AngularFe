@@ -14,7 +14,7 @@ export class HistoryScheduleService {
   isLoading$ = new BehaviorSubject<boolean>(false);
 
   fetchHistorySchedules(): Observable<Schedule[]> {
-    return this.http.get<Schedule[]>(`${this.apiUrl}/movies/schedule/history`);
+    return this.http.get<Schedule[]>(`${this.apiUrl}/moviesScheduleHistory`);
   }
 
 }

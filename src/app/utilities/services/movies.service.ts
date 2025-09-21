@@ -15,6 +15,6 @@ export class MoviesService {
 
   getMoviesByDate(date: Date): Observable<Movie[]> {
     const params = new HttpParams().set('date', format(date, 'yyyy-MM-dd'));
-    return this.http.get<Movie[]>(`${this.apiUrl}/movies/schedule`, { params });
+    return this.http.get<Movie[]>(`${this.apiUrl}/moviesSchedule`, { params });
   }
 }

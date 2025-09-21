@@ -1,6 +1,6 @@
 import {Component, input} from '@angular/core';
 import {CommonModule} from '@angular/common';
-import {Movie} from '../../../utilies/models/movie.interface';
+import {Movie} from '../../../utilities/models/movie.interface';
 
 @Component({
   selector: 'app-movie-list',
