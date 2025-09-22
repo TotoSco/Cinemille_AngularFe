@@ -14,7 +14,7 @@ export class MoviesService {
   private apiUrl = '/api/v1';
 
   getMoviesByDate(date: Date): Observable<Movie[]> {
-    const params = new HttpParams().set('date', format(date, 'yyyy-MM-ddd'));
+    const params = new HttpParams().set('date', format(date, 'yyyy-MM-dd'));
     return this.http.get<Movie[]>(`${this.apiUrl}/moviesSchedule`, { params }).pipe(
       catchError((error: HttpErrorResponse) => {
         console.error("Error loading movies:", error.error.details);
