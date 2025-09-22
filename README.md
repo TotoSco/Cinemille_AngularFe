@@ -11,7 +11,7 @@ L’applicazione comunica con il backend sviluppato in **Spring Boot** tramite A
 - [Node.js](https://nodejs.org/) >= 22.x
 - [Angular CLI](https://angular.io/cli) >= 20.x
 - [npm](https://www.npmjs.com/) o [yarn](https://yarnpkg.com/)
-- Backend avviato (👉 [Cinemille_SpringBootBe](https://github.com/TotoSco/Cinemille_SpringBootBe))
+- Backend avviato (👉 [Cinemille_SpringBootBe](https://github.com/AntoSco/Cinemille_SpringBootBe))
 
 ---
 
@@ -19,7 +19,7 @@ L’applicazione comunica con il backend sviluppato in **Spring Boot** tramite A
 
 ### 1. Clonare il repository
 ```bash
-git clone https://github.com/TotoSco/Cinemille_AngularFe.git
+git clone https://github.com/AntoSco/Cinemille_AngularFe.git
 ````
 
 ### 2. Installare le dipendenze
@@ -73,7 +73,7 @@ docker run --rm -p 4200:80 --name cinemille-frontend cinemille-frontend
 
 👉 Ora il FE sarà disponibile su [http://localhost:4200](http://localhost:4200).
 
-Fare riferimento al README.md del progetto  [Cinemille_SpringBootBe](https://github.com/TotoSco/Cinemille_SpringBootBe) per il run con docker-compose.
+Fare riferimento al README.md del progetto  [Cinemille_SpringBootBe](https://github.com/AntoSco/Cinemille_SpringBootBe) per il run con docker-compose.
 
 ---
 
@@ -87,11 +87,5 @@ Fare riferimento al README.md del progetto  [Cinemille_SpringBootBe](https://git
 
 ## 📖 Documentazione correlata
 
-* [Backend Cinemille (Spring Boot)](https://github.com/TotoSco/Cinemille_SpringBootBe)
+* [Backend Cinemille (Spring Boot)](https://github.com/AntoSco/Cinemille_SpringBootBe)
 * [Angular Docs](https://angular.io/docs)
-
----
-
-## 👨‍💻 Autore
-
-Progetto sviluppato da **[TotoSco](https://github.com/TotoSco)**.
