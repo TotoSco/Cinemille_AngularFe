@@ -1,0 +1,81 @@
+<h2 class="text-3xl font-bold text-gray-800 mb-6">
+  Schedule History
+</h2>
+
+<div class="filter-container flex flex-col gap-4 p-6 bg-gray-50 rounded-lg shadow-md">
+  <h2 class="text-xl font-bold text-gray-800">
+    Filter By
+  </h2>
+
+  <div class="flex items-center gap-6">
+    <mat-form-field class="w-1/4">
+      <mat-label>Title</mat-label>
+      <input
+        matInput
+        placeholder="Filter by title..."
+        (keyup)="onFilterTitle($event)"
+        [disabled]="this.disabledFiltersInputs().title"
+      >
+    </mat-form-field>
+
+    <div class="w-px h-10 bg-gray-300"></div>
+
+    <mat-form-field class="w-1/4">
+      <mat-label>Start date</mat-label>
+      <input
+        matInput
+        placeholder="yyyy-mm-dd"
+        [(ngModel)]="filters.fromDate"
+        (keyup)="onFilterDate()"
+        [disabled]="this.disabledFiltersInputs().date"
+      >
+    </mat-form-field>
+    <p>e</p>
+    <mat-form-field class="w-1/4">
+      <mat-label>End date</mat-label>
+      <input
+        matInput
+        placeholder="yyyy-mm-dd"
+        [(ngModel)]="filters.toDate"
+        (keyup)="onFilterDate()"
+        [disabled]="this.disabledFiltersInputs().date"
+      >
+    </mat-form-field>
+  </div>
+</div>
+
+
+<div class="h-px bg-gradient-to-r from-transparent via-white to-transparent my-4"></div>
+
+<table mat-table matSort matSortActive="from" matSortDirection="desc" matSortDisableClear
+       class="schedules-table"
+       [dataSource]="schedules">
+
+  <ng-container matColumnDef="movieTitle">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let element" class="schedules-table-cell">{{ element.movieTitle }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="theatre">
+    <th mat-header-cell *matHeaderCellDef>Theatre</th>
+    <td mat-cell *matCellDef="let element" class="schedules-table-cell">SALA {{ element.theatre }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="fromDate">
+    <th mat-header-cell mat-sort-header *matHeaderCellDef>From</th>
+    <td mat-cell *matCellDef="let element" class="schedules-table-cell">{{ element.fromDate }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="toDate">
+    <th mat-header-cell *matHeaderCellDef>To</th>
+    <td mat-cell *matCellDef="let element" class="schedules-table-cell">{{ element.toDate }}</td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columns"></tr>
+  <tr mat-row *matRowDef="let row; columns: columns"></tr>
+
+</table>
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+               showFirstLastButtons
+               aria-label="Select page">
+</mat-paginator>
