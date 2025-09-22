@@ -1,6 +1,6 @@
 import {inject, Injectable} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {BehaviorSubject, Observable} from 'rxjs';
+import {HttpClient, HttpErrorResponse} from '@angular/common/http';
+import {BehaviorSubject, catchError, Observable, throwError} from 'rxjs';
 import {Schedule} from '../models/schedule.interface';
 
 @Injectable({
@@ -14,7 +14,12 @@ export class HistoryScheduleService {
   isLoading$ = new BehaviorSubject<boolean>(false);
 
   fetchHistorySchedules(): Observable<Schedule[]> {
-    return this.http.get<Schedule[]>(`${this.apiUrl}/moviesScheduleHistory`);
+    return this.http.get<Schedule[]>(`${this.apiUrl}/moviesScheduleHistory`).pipe(
+      catchError((error: HttpErrorResponse) => {
+        console.error("Error loading schedule history:", error.error.details);
+        return throwError(() => error);
+      })
+    );
   }
 
 }
